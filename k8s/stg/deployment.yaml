@@ -4,6 +4,7 @@ kind: Deployment
 
 metadata:
   name: express-k8s-demo
+  namespace: production
 
 spec: 
   replicas: 2

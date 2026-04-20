@@ -1,15 +1,26 @@
+// index.js
 const express = require("express");
-const app = express();
 const dotenv = require("dotenv");
 
+// Load environment variables from .env file
 dotenv.config();
 
-const PORT = process.env.PORT || 8080;
+const app = express();
+const PORT = process.env.PORT || 3000;
+console.log('port', PORT);
 
+
+// Middleware để parse JSON
+app.use(express.json());
+
+// Route cơ bản
 app.get("/", (req, res) => {
-  res.send("Hello from Express + Docker + CI/CD + K8s! 🚀");
+  console.log('aolo alas');
+  
+  res.status(200).json("Hello, World!");
 });
 
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
+// Start server
+app.listen(PORT, "0.0.0.0", () => {
+  console.log(`Server is running on http://localhost:${PORT}`);
 });
